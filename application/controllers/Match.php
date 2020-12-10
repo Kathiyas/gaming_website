@@ -28,4 +28,42 @@ class Match extends CI_Controller {
         $this->load->view('admin/match.php' , $data);
 
     }
+
+    public function match_team_update(){
+        $team_1_id = $this->input->post('team1');
+        $team_2_id = $this->input->post('team2');
+
+        if($team_1_id == $team_2_id){
+            $this->session->set_flashdata('team_match','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+            Team 1 and Team 2 must be different to update
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>');
+          redirect('match');
+          return;
+        }
+        else{
+            $result =$this->match_model->match_team_update($team_1_id , $team_2_id);
+            if($result){
+                $this->session->set_flashdata('team_match','<div class="alert alert-success alert-dismissible fade show" role="alert">
+                Team updated Succesfully
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>');
+            }else{
+                $this->session->set_flashdata('team_match','<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Something Wrong contact system admin
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>');
+            }
+          redirect('match');
+
+
+        }
+
+    }
 }

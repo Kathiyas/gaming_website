@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['addTeam'] = 'team/add_team';
 $route['match'] = 'match';
+$route['match/match_team_update'] = 'match/match_team_update';

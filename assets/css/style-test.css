@@ -615,24 +615,7 @@ i.fas.fa-exchange-alt, i.fas.fa-minus, .mapban-icons a i, .icon-row a i{
     width: 80px;
     height: 58px;
 }
-.banditry-img::before{
-    position: absolute;
-    background: url(../../images/5f3453b8244cc9.946703553387.png);
-    background-size: 66px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #00f;
-    left: 0;
-}
-.banditry-img2::before{
-    position: absolute;
-    background: url(../../images/5f3993a64f9991.310436889262.png);
-    background-size: 66px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: #ff6e00;
-    right: 0;
-}
+
 .text-mapban2{
     display: flex;
     margin-top: 15px;

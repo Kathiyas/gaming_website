@@ -1,4 +1,3 @@
-<?php var_dump($teams) ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +19,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
     <link rel="stylesheet" href="assets/css/carousel.scss">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/spectre.css/0.5.9/spectre.min.css" integrity="sha512-9RIcp1f4CE6dEuYX9085tXaEbYd1ap04d2Av1ub/dwuT33WbfbHStDdQ+shKrp5wzZzleh5DOg+7ABSnaQP/nQ==" crossorigin="anonymous" />
-    
+    <style>
+        .banditry-img::before{
+            position: absolute;
+            background: url(<?php echo base_url('images/') . $teams[0]->team_1_img ?>);
+            background-size: 66px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #00f;
+            left: 0;
+        }
+        .banditry-img2::before{
+            position: absolute;
+            background: url(<?php echo base_url('images/') . $teams[0]->team_2_img ?>);
+            background-size: 66px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #ff6e00;
+            right: 0;
+        }
+    </style>
 </head>
 <body>
     <header id="header" class="map-ban-border">
@@ -39,6 +57,7 @@
             </section> -->
             <div class="content">
                 <div class="match1-subsec">
+                <?php echo $this->session->flashdata('team_match'); ?>
                     <div class="match1-bg">
                         <div class="match-img px-4">
                             <img src="images/5f30678590ab97.446562299141.png" alt="">
@@ -80,38 +99,43 @@
                                 <span class="close-pop">✕</span>
                             </div>
                             <div class="popup-body row">
-                                <div class="col popup-left">
-                                    <h3 class="text-center">Team 1</h3> 
-                                    <div class="popup-field d-flex flex-column text-left">
-                                        <label for="">Select Team:</label>
-                                        <select name="" id="team_1">
-                                            <option value="">Custom Team</option>
-                                            <?php for($i=0 ; $i <count($teams_list);$i++ ) : ?>
-                                            <option value="<?=  $teams_list[$i]->id ?>"><?=  $teams_list[$i]->name ?></option>
-                                            <?php endfor ?>
-                                            
-                                        </select>
-                                    </div> 
-                                </div>
-                                <div class="col popup-right">
-                                    <h3 class="text-center">Team 2</h3>
-                                    <div class="popup-field d-flex flex-column text-left">
-                                        <label for="">Select Team:</label>
-                                        <select name="" id="team_2">
-                                            <option value="">Custom Team</option>
-                                            <?php for($i=0 ; $i <count($teams_list);$i++ ) : ?>
-                                            <option value="<?=  $teams_list[$i]->id ?>"><?=  $teams_list[$i]->name ?></option>
-                                            <?php endfor ?>
-                                            
-                                        </select>
+                                <form action="match/match_team_update" method="post" class="w-100">
+                                        <div class="col popup-left">
+                                            <h3 class="text-center">Team 1</h3> 
+                                            <div class="popup-field d-flex flex-column text-left">
+                                                <label for="">Select Team:</label>
+                                                <select name="team1" id="team_1">
+                                                    <option value="">Custom Team</option>
+                                                    <?php for($i=0 ; $i <count($teams_list);$i++ ) : ?>
+                                                    <option value="<?=  $teams_list[$i]->id ?>"><?=  $teams_list[$i]->name ?></option>
+                                                    <?php endfor ?>
+                                                    
+                                                </select>
+                                            </div> 
+                                        </div>
+                                        <div class="col popup-right">
+                                            <h3 class="text-center">Team 2</h3>
+                                            <div class="popup-field d-flex flex-column text-left">
+                                                <label for="">Select Team:</label>
+                                                <select name="team2" id="team_2">
+                                                    <option value="">Custom Team</option>
+                                                    <?php for($i=0 ; $i <count($teams_list);$i++ ) : ?>
+                                                    <option value="<?=  $teams_list[$i]->id ?>"><?=  $teams_list[$i]->name ?></option>
+                                                    <?php endfor ?>
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="popup-footer">
+                                            <input type="submit" value="Submit">
+                                        <!-- <button class="" type="submit">
+                                            Update
+                                        </button> -->
                                     </div>
-                                </div>
-                            </div>
-                            <div class="popup-footer">
-                                <button class="" type="submit">
-                                    Update
-                                </button>
-                            </div>
+                                </form>
+                             </div>
+                                    
+                                
                         </div>
                     </div>
                     <a href="#"><i class="fas fa-eye"></i></a>
@@ -671,10 +695,10 @@
                             </div>
                             <div class="text-mapban2">
                                 <div class="banditry-img">
-                                    <h2>TACTICAL BANDITRY</h2>
+                                    <h2><?= $teams[0]->team_1_name ?></h2>
                                 </div>
                                 <div class="banditry-img2">
-                                    <h2>TROLL TEAM 6</h2>
+                                    <h2><?= $teams[0]->team_2_name ?></h2>
                                 </div>
                             </div>
                             <div class="text-mapban-bg">
@@ -2753,5 +2777,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
     <script src="assets/js/jquerytest.js"></script>
+    <script src="assets/js/ajax.js"></script>
+
 </body>
 </html>
