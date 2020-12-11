@@ -50,8 +50,8 @@
         <div class="tabs">
             <nav class="map-ban-border">
                 <a href="#" class="hidden"></a>
-                <a class="map-ban-border" href="dashboard-test.html"><i class="fas fa-helicopter"></i><span>Single Match</span></a>
-                <a class="teams-tab" href="dashboard-test.html"><i class="fas fa-user-secret"></i><span>Teams</span></a>
+                <a class="map-ban-border" href="<?php echo base_url("/") ?>"><i class="fas fa-helicopter"></i><span>Single Match</span></a>
+                <a class="teams-tab" href="<?php echo base_url("/") ?>"><i class="fas fa-user-secret"></i><span>Teams</span></a>
             </nav>
             <!-- <section class="front-content visible-sec">
             </section> -->
@@ -93,13 +93,13 @@
                     <a href="#"><i class="fas fa-user-plus"></i></a>
                     <a href="" class="popup" data-target-popup="form-tabs"><i class="fas fa-users"></i></a>
                     <div class="popup-main" data-pop="form-tabs">
-                        <div class="popup-bg p-2 d-block">
+                        <form class="popup-bg p-2 d-block" action="match/match_team_update" method="post">
                             <div class="header-popup d-flex justify-content-between p-2">
                                 <h4>Update Teams</h4>
                                 <span class="close-pop">✕</span>
                             </div>
                             <div class="popup-body row">
-                                <form action="match/match_team_update" method="post" class="w-100">
+                               
                                         <div class="col popup-left">
                                             <h3 class="text-center">Team 1</h3> 
                                             <div class="popup-field d-flex flex-column text-left">
@@ -126,17 +126,17 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="popup-footer">
-                                            <input type="submit" value="Submit">
+                                        
+                                
+                             </div>
+                                    
+                             <div class="popup-footer mb-4">
+                                            <input type="submit" value="Submit" class="form-btn">
                                         <!-- <button class="" type="submit">
                                             Update
                                         </button> -->
-                                    </div>
-                                </form>
                              </div>
-                                    
-                                
-                        </div>
+                        </form>
                     </div>
                     <a href="#"><i class="fas fa-eye"></i></a>
                     <a href="#"><i class="fas fa-window-maximize"></i></a>

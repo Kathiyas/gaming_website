@@ -120,6 +120,41 @@
                                 <input type="submit" value="Add Team" class="update-btn">    
                             </form>
                             
+                            
+                            <!-- dont step beyond this --> 
+                        </div>
+                        <div id="tab2-2" class="tab-content2">
+                            <?php if(!$teams ){ ?>
+                                 <div class="puzzled">
+                                    <img src="images/404.png" class="puzzled__image">
+                                    <img src="images/404-questionmark.png" class="puzzled__questionmark puzzled__questionmark--1">
+                                    <img src="images/404-questionmark.png" class="puzzled__questionmark puzzled__questionmark--2">
+                                    <img src="images/404-questionmark.png" class="puzzled__questionmark puzzled__questionmark--3">
+                                </div>
+                                <p class="text-center my-1">You don't have any Teams!</p>
+                                <p class="text-center my-1">Create one now!</p>
+                                <button class="update-btn">Add Team</button>
+                            <?php }else{ ?>
+                            <div id="" class="tab-content">
+                                
+                                <?php for($i=0 ; $i <count($teams);$i++ ) : ?>
+                                     <?php if($i %2 == 0): ?>  
+                                     <div class="list-row row my-5">
+                                         
+                                     <?php endif ?>
+                                        <div class="col "  >
+                                            <div class="col-content" style="text-align: center;padding: 80px 0;border: 2px solid;border-image-outset: 0;border-image-repeat: stretch;border-image-slice: 100%;border-image-source: none;border-image-width: 1;cursor: pointer;margin: 30px 10px;border-image: linear-gradient(to right, rgb(var(--MainColor)) 0%, rgb(var(--MainColorLight)) 100%);border-image-slice: 1;">
+                                                <h3><?php echo $teams[$i]->name  ?></h3>
+                                            </div>
+                                        </div>
+                                    <?php if($i %2 == 1): ?>  
+                                    </div>
+                                    <?php endif ?>
+                                         
+                                <?php endfor ?>
+                            </div>
+                            <?php } ?>
+
                             <div class="stars-main">
                                 <div class="stars">
                                     <div class="stars-inner">
@@ -158,39 +193,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- dont step beyond this --> 
-                        </div>
-                        <div id="tab2-2" class="tab-content2">
-                            <?php if(!$teams ){ ?>
-                                 <div class="puzzled">
-                                    <img src="images/404.png" class="puzzled__image">
-                                    <img src="images/404-questionmark.png" class="puzzled__questionmark puzzled__questionmark--1">
-                                    <img src="images/404-questionmark.png" class="puzzled__questionmark puzzled__questionmark--2">
-                                    <img src="images/404-questionmark.png" class="puzzled__questionmark puzzled__questionmark--3">
-                                </div>
-                                <p class="text-center my-1">You don't have any Teams!</p>
-                                <p class="text-center my-1">Create one now!</p>
-                                <button class="update-btn">Add Team</button>
-                            <?php }else{ ?>
-                            <div id="" class="tab-content">
-                                
-                                <?php for($i=0 ; $i <count($teams);$i++ ) : ?>
-                                     <?php if($i %2 == 0): ?>  
-                                     <div class="list-row row my-5">
-                                         
-                                     <?php endif ?>
-                                        <div class="col "  >
-                                            <div class="col-content" style="text-align: center;padding: 80px 0;border: 2px solid;border-image-outset: 0;border-image-repeat: stretch;border-image-slice: 100%;border-image-source: none;border-image-width: 1;cursor: pointer;margin: 30px 10px;border-image: linear-gradient(to right, rgb(var(--MainColor)) 0%, rgb(var(--MainColorLight)) 100%);border-image-slice: 1;">
-                                                <h3><?php echo $teams[$i]->name  ?></h3>
-                                            </div>
-                                        </div>
-                                    <?php if($i %2 == 1): ?>  
-                                    </div>
-                                    <?php endif ?>
-                                         
-                                <?php endfor ?>
-                            </div>
-                            <?php } ?>
                             
                         </div>
                        

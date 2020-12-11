@@ -728,11 +728,11 @@ a.map-ban-border.selected:parent nav{
     font-size: 18px;
     padding: 5px;
 }
-.popup-footer button:hover, .update-btn:hover, .flex-row-right button:hover{
+.popup-footer button:hover, .update-btn:hover, .flex-row-right button:hover, .form-btn:hover{
     background: linear-gradient(to right, rgb(var(--MainColor)) 35%, rgb(var(--MainColorLight)) 65%);
     box-shadow: none;
 }
-.popup-footer button, .update-btn, .flex-row-right button{
+.popup-footer button, .update-btn, .flex-row-right button, .form-btn{
     border-radius: 24px;
     box-shadow: -1px 0 0 var(--weight, 2px) rgba(var(--MainColor), 0.75), -1px -1px 0 var(--weight, 2px) rgba(var(--MainColor), 0.25), -1px 1px 0 var(--weight, 2px) rgba(var(--MainColor), 0.25), 0 -1px 0 var(--weight, 2px) rgba(var(--MainColorMiddle), 0.5), 0 1px 0 var(--weight, 2px) rgba(var(--MainColorMiddle), 0.5), 1px -1px 0 var(--weight, 2px) rgba(var(--MainColorLight), 0.25), 1px 1px 0 var(--weight, 2px) rgba(var(--MainColorLight), 0.25), 1px 0 0 var(--weight, 2px) rgba(var(--MainColorLight), 0.75);
     background: transparent;
