@@ -44,6 +44,7 @@
             </nav>
            
             <div class="content">
+            <?php echo $this->session->flashdata('team_upload'); ?>
                 <div class="horizontal-tabs">
                     <div id="tabs-nav">
                         <div class="addmatch-tab active">
@@ -135,7 +136,7 @@
                                 <p class="text-center my-1">Create one now!</p>
                                 <button class="update-btn">Add Team</button>
                             <?php }else{ ?>
-                            <div id="" class="tab-content">
+                            <div id="" class="">
                                 
                                 <?php for($i=0 ; $i <count($teams);$i++ ) : ?>
                                      <?php if($i %2 == 0): ?>  

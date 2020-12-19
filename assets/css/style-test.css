@@ -636,7 +636,7 @@ i.fas.fa-exchange-alt, i.fas.fa-minus, .mapban-icons a i, .icon-row a i{
 .club-content{
     text-align: center;
     padding: 4px;
-    border: 3px solid transparent;
+    border: 3px solid var(--FontColor);
 }
 .club-content span:before{
     position: absolute;
@@ -648,11 +648,72 @@ i.fas.fa-exchange-alt, i.fas.fa-minus, .mapban-icons a i, .icon-row a i{
     left: 0;
     top: 0;
 }
+
+
+.cross::after{
+    position: absolute;
+    width: 50px;
+    
+    margin-left: -25px;
+    left: 50%;
+    top: -8px;
+    text-align: center;
+    font-family: 'Font Awesome 5 Free';
+    font-size: 50px;
+    font-size: 3.75rem;
+    font-weight: 900;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    z-index:999999;
+}
+
+.team_1_cross::after{
+    content: '\f00d';
+
+    color: rgb(0, 0, 255);
+
+}
+
+.team_2_cross::after{
+    content: '\f00d';
+    color: #ff6e00;
+}
+
+.ponter-none{
+    pointer-events: none;
+}
+
+.picked .mapbans__name::after{
+
+    content: '';
+    margin-left: 0;
+    left: unset;
+    top: 15px;
+    width: 81px;
+    height: 70%;
+    background-size: 71px;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation-name: slideFadeIn;
+    animation-duration: 0.5s;
+    animation-delay: 0.75s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+    position: absolute;
+    
+}
+
+.text-mapban-bg:hover img{
+    filter: grayscale(100%);
+}
+.text-mapban-bg:hover span{
+    background-image: linear-gradient(to right, gray 35%, gray 65%);
+}
 .club-content span{
     position: relative;
     top: 0;
     left: 0;
-    z-index: 9;
+    /* z-index: 9; */
     padding: 6px 20px;
     font-size: 37px;
     font-weight: 500;
@@ -675,15 +736,15 @@ i.fas.fa-exchange-alt, i.fas.fa-minus, .mapban-icons a i, .icon-row a i{
     background-repeat: no-repeat; */
     padding: 15px 0;
     margin-top: 15px;
-    filter: grayscale(100%);
-    border: 3px solid rgba(255, 255, 255, 0.5);
+    filter: grayscale(0%);
+    border: 3px solid rgba(78, 68, 68, 0.5);
 }
 .text-mapban-bg:hover{
     filter: grayscale(0%);
 }
 .text-mapban-bg:hover .club-content{
-    border: 3px solid var(--FontColor);
-    z-index: 99;
+    /* 
+    z-index: 99; */
 }
 .text-mapban-bg:hover span{
 }
@@ -1019,4 +1080,9 @@ div#tab2-2 {
 .add-overlay{
     margin: auto;
     width: 90%;
+}
+.starts-container{
+    width: 90%;
+    margin: auto;
+    padding: 50px 0;
 }

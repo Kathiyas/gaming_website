@@ -38,6 +38,8 @@
             background-color: #ff6e00;
             right: 0;
         }
+
+        
     </style>
 </head>
 <body>
@@ -84,11 +86,13 @@
                         </ul>
                     </div>
                 </div>
+
+
                 <div class="icon-row text-right d-block px-4 py-1 mt-4">
                     <a href="#"><i class="fas fa-trash"></i></a>
                     <a href="#"><i class="fas fa-clone"></i></a>
-                    <a href="#"><i class="fas fa-undo"></i></a>
-                    <a href="#"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="<?php echo base_url('match/reset') ?>/<?php echo $teams[0]->id ?>"><i class="fas fa-undo"></i></a>
+                    <a href="match/edit"><i class="fas fa-pencil-alt"></i></a>
                     <a href="#"><i class="fas fa-gamepad"></i></a>
                     <a href="#"><i class="fas fa-user-plus"></i></a>
                     <a href="" class="popup" data-target-popup="form-tabs"><i class="fas fa-users"></i></a>
@@ -105,7 +109,7 @@
                                             <div class="popup-field d-flex flex-column text-left">
                                                 <label for="">Select Team:</label>
                                                 <select name="team1" id="team_1">
-                                                    <option value="">Custom Team</option>
+                                                    
                                                     <?php for($i=0 ; $i <count($teams_list);$i++ ) : ?>
                                                     <option value="<?=  $teams_list[$i]->id ?>"><?=  $teams_list[$i]->name ?></option>
                                                     <?php endfor ?>
@@ -118,7 +122,7 @@
                                             <div class="popup-field d-flex flex-column text-left">
                                                 <label for="">Select Team:</label>
                                                 <select name="team2" id="team_2">
-                                                    <option value="">Custom Team</option>
+                                                    
                                                     <?php for($i=0 ; $i <count($teams_list);$i++ ) : ?>
                                                     <option value="<?=  $teams_list[$i]->id ?>"><?=  $teams_list[$i]->name ?></option>
                                                     <?php endfor ?>
@@ -148,15 +152,17 @@
                             <h3>Win Data</h3>
                             <a href="#"><i class="fas fa-minus"></i></a>
                         </div>
+                        <?php if(count( $selected_match) >=3){ ?>
+
                         <div id="clientSlider">
                             <div class="item item-1 slick-current slick-active">
                                 <div class="item-bg">
-                                    <h3 class="text-center">Consulate</h3>
+                                    <h3 class="text-center"><?php echo $selected_match[0]->name ?></h3>
                                 <div class="main-flex d-flex align-items-center">
                                     <div class="first-step">
                                         <h2>ACARA GAMING</h2>
                                         <p>Roundwins:</p>
-                                        <input type="number" placeholder="Number of Roundwins">
+                                        <input type="number" name= "map_1_round" placeholder="Number of Roundwins">
                                         <p>Operator Bans:</p>
                                         <div class="d-flex align-items-center justify-content-center">
                                             <div class="inner-flex">
@@ -318,21 +324,22 @@
                                         <input type="checkbox" name="strawPollMe" id="strawPollMe" checked="">
                                         <i class="form-icon"></i> Map finished (Counts as Mapwin)
                                     </label>
-                                    <label class="form-switch d-inline">
+                                    <!-- <label class="form-switch d-inline">
                                         <input type="checkbox" name="strawPollMe" id="strawPollMe" checked="">
                                         <i class="form-icon"></i>  Swap Operator Ban Sides (Attacker & Defender)
-                                    </label>
+                                    </label> -->
+                                    <input type="submit" value="Update" class="form-btn">
                                 </div>
                                 </div>
                             </div>
                             <div class="item item-2">
                                 <div class="item-bg">
-                                    <h3 class="text-center">Consulate</h3>
+                                    <h3 class="text-center"><?php echo $selected_match[1]->name ?></h3>
                                 <div class="main-flex d-flex align-items-center">
                                     <div class="first-step">
                                         <h2>ACARA GAMING</h2>
                                         <p>Roundwins:</p>
-                                        <input type="number" placeholder="Number of Roundwins">
+                                        <input type="number" name ="map_2_round" placeholder="Number of Roundwins">
                                         <p>Operator Bans:</p>
                                         <div class="d-flex align-items-center justify-content-center">
                                             <div class="inner-flex">
@@ -494,21 +501,23 @@
                                         <input type="checkbox" name="strawPollMe" id="strawPollMe" checked="">
                                         <i class="form-icon"></i> Map finished (Counts as Mapwin)
                                     </label>
-                                    <label class="form-switch d-inline">
+                                    <!-- <label class="form-switch d-inline">
                                         <input type="checkbox" name="strawPollMe" id="strawPollMe" checked="">
                                         <i class="form-icon"></i>  Swap Operator Ban Sides (Attacker & Defender)
-                                    </label>
+                                    </label> -->
+                                    <input type="submit" value="Update" class="form-btn">
+
                                 </div>
                                 </div>
                             </div>
                             <div class="item item-3">
                                 <div class="item-bg">
-                                    <h3 class="text-center">Consulate</h3>
+                                    <h3 class="text-center"><?php echo $selected_match[2]->name ?></h3>
                                 <div class="main-flex d-flex align-items-center">
                                     <div class="first-step">
                                         <h2>ACARA GAMING</h2>
                                         <p>Roundwins:</p>
-                                        <input type="number" placeholder="Number of Roundwins">
+                                        <input type="number" name ="map_2_round" placeholder="Number of Roundwins">
                                         <p>Operator Bans:</p>
                                         <div class="d-flex align-items-center justify-content-center">
                                             <div class="inner-flex">
@@ -670,14 +679,19 @@
                                         <input type="checkbox" name="strawPollMe" id="strawPollMe" checked="">
                                         <i class="form-icon"></i> Map finished (Counts as Mapwin)
                                     </label>
-                                    <label class="form-switch d-inline">
+                                    <!-- <label class="form-switch d-inline">
                                         <input type="checkbox" name="strawPollMe" id="strawPollMe" checked="">
                                         <i class="form-icon"></i>  Swap Operator Ban Sides (Attacker & Defender)
-                                    </label>
+                                    </label> -->
+                                    <input type="submit" value="Update" class="form-btn">
+
                                 </div>
                                 </div>
                             </div>
                         </div>
+                        <?php } else {?>
+                            <h4 class="pl-2">Select map first</h4>
+                            <?php } ?>
                     </div>
                     <div class="row1 mt-4 flex-row d-flex">
                         <div class="win-data">
@@ -701,47 +715,68 @@
                                     <h2><?= $teams[0]->team_2_name ?></h2>
                                 </div>
                             </div>
-                            <div class="text-mapban-bg">
+                            <div class="text-mapban-bg" id="map-1" map="club_house">
                                 <img src="images/club_house.jpg" alt="">
                                <div class="club-content">
                                     <span>Club House</span>
                                </div>
+                                <div class="cross">
+                               </div>
+                               <div class="mapbans__name"></div>
                             </div>
-                            <div class="text-mapban-bg text-mapban-bg2">
+                            <div class="text-mapban-bg text-mapban-bg2" id="map-2" map="coastline">
                                 <img src="images/coastline.jpg" alt="">
                                 <div class="club-content">
                                      <span>Coastline</span>
                                 </div>
+                                <div class="cross">
+                               </div>
+                               <div class="mapbans__name"></div>
                             </div>
-                            <div class="text-mapban-bg text-mapban-bg3">
+                            <div class="text-mapban-bg text-mapban-bg3" id="map-3" map="consulate">
                                 <img src="images/consulate.jpg" alt="">
                                 <div class="club-content">
                                      <span>Consulate</span>
                                 </div>
+                                <div class="cross">
+                               </div>
+                               <div class="mapbans__name"></div>
                             </div>
-                            <div class="text-mapban-bg text-mapban-bg4">
+                            <div class="text-mapban-bg text-mapban-bg4" id="map-4" map="kafe_dostoyevsky">
                                 <img src="images/dostoyevsky.jpg" alt="">
                                 <div class="club-content">
                                      <span>Kafe Dostoyevsky</span>
                                 </div>
+                                <div class="cross">
+                               </div>
+                               <div class="mapbans__name"></div>
                             </div>
-                            <div class="text-mapban-bg text-mapban-bg5">
+                            <div class="text-mapban-bg text-mapban-bg5" id="map-5" map="oregon">
                                 <img src="images/oregon.jpg" alt="">
                                 <div class="club-content">
                                      <span>Oregon</span>
                                 </div>
+                                <div class="cross">
+                               </div>
+                               <div class="mapbans__name"></div>
                             </div>
-                            <div class="text-mapban-bg text-mapban-bg6">
+                            <div class="text-mapban-bg text-mapban-bg6" id="map-6" map="theme_park">
                                 <img src="images/theme.jpg" alt="">
                                 <div class="club-content">
                                      <span>Theme Park</span>
                                 </div>
+                                <div class="cross">
+                               </div>
+                               <div class="mapbans__name"></div>
                             </div>
-                            <div class="text-mapban-bg text-mapban-bg7">
+                            <div class="text-mapban-bg text-mapban-bg7" id="map-7" map="villa">
                                 <img src="images/villa.jpg" alt="">
                                 <div class="club-content">
                                      <span>Villa</span>
                                 </div>
+                                <div class="cross">
+                               </div>
+                               <div class="mapbans__name"></div>
                             </div>
                         </div>
                         <div class="flex-row-right">
@@ -2777,7 +2812,239 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
     <script src="assets/js/jquerytest.js"></script>
-    <script src="assets/js/ajax.js"></script>
+    <script>
+        
+        $(document).ready(function(f){
+          
+          //var maps =  $(".text-mapban-bg");
+            // maps.forEach(element => {
+            //    var map_name =  element.attributes.map.nodeValue;
+            //    var map_from_db = 
+            //     console.log( map_from_db + " sad");
+            // });
 
+           
+                 
+               <?php 
+
+                    if( $map_status[0]->club_house == 1 || $map_status[0]->club_house == 2 || $map_status[0]->club_house == 3 || $map_status[0]->club_house == 4){
+                        if ($map_status[0]->club_house == 1){ ?>
+                                    $('#map-1').addClass("ponter-none ");
+                                    $('#map-1 .cross').addClass("team_1_cross");
+                      <?php  }
+                        else if($map_status[0]->club_house == 2){ ?>
+
+                                    $('#map-1').addClass("ponter-none ");
+                                    $('#map-1 .cross').addClass("team_2_cross");
+
+                 <?php   } else if ($map_status[0]->club_house == 3) { ?>
+
+                                    $('#map-1').addClass("ponter-none picked team_1");
+                     
+                 <?php   } else if ($map_status[0]->club_house == 4){ ?>
+                                    $('#map-1').addClass("ponter-none picked team_2");
+
+                <?php    }
+                    }
+                     if( $map_status[0]->coastline == 1 || $map_status[0]->coastline == 2 || $map_status[0]->coastline == 3 || $map_status[0]->coastline == 4){
+                         if ($map_status[0]->coastline == 1){ ?>
+
+                                    $('#map-2').addClass("ponter-none ");
+                                    $('#map-2 .cross').addClass("team_1_cross");
+
+                       <?php  }
+                         else if($map_status[0]->coastline == 2){ ?>
+
+                            $('#map-2').addClass("ponter-none");
+                            $('#map-2 .cross').addClass("team_2_cross");
+
+                <?php   } else if ($map_status[0]->coastline == 3) { ?>
+
+                             $('#map-2').addClass("ponter-none picked team_1");
+                
+                    
+                <?php   } else if ($map_status[0]->coastline == 4){ ?>
+
+                            $('#map-2').addClass("ponter-none picked team_2");
+
+                <?php    }
+                    }
+                     if( $map_status[0]->consulate == 1 || $map_status[0]->consulate == 2 || $map_status[0]->consulate == 3 || $map_status[0]->consulate == 4){
+                        if ($map_status[0]->consulate == 1){ ?>
+                                    $('#map-3').addClass("ponter-none ");
+                                    $('#map-3 .cross').addClass("team_1_cross");
+                   <?php     }
+                         else if($map_status[0]->consulate == 2){ ?>
+                            $('#map-3').addClass("ponter-none ");
+                            $('#map-3 .cross').addClass("team_2_cross");
+                <?php   } else if ($map_status[0]->consulate == 3) { ?>
+                             $('#map-3').addClass("ponter-none picked team_1");
+                    
+                    
+                <?php   } else if ($map_status[0]->consulate == 4){ ?>
+                            $('#map-3').addClass("ponter-none picked team_2");
+
+                <?php    }
+                    }
+                     if( $map_status[0]->kafe_dostoyevsky == 1 || $map_status[0]->kafe_dostoyevsky == 2 || $map_status[0]->kafe_dostoyevsky == 3 || $map_status[0]->kafe_dostoyevsky == 4){
+                        if ($map_status[0]->kafe_dostoyevsky == 1){ ?>
+                                    $('#map-4').addClass("ponter-none ");
+                                    $('#map-4 .cross').addClass("team_1_cross");
+                   <?php     }
+                         else if($map_status[0]->kafe_dostoyevsky == 2){ ?>
+                            $('#map-4').addClass("ponter-none ");
+                            $('#map-4 .cross').addClass("team_2_cross");
+                <?php   } else if ($map_status[0]->kafe_dostoyevsky == 3) { ?>
+                            $('#map-4').addClass("ponter-none picked team_1");
+
+                    
+                <?php   } else if ($map_status[0]->kafe_dostoyevsky == 4){ ?>
+                             $('#map-4').addClass("ponter-none picked team_2");
+
+                <?php    }
+                    }
+                     if( $map_status[0]->oregon == 1 || $map_status[0]->oregon == 2 || $map_status[0]->oregon == 3 || $map_status[0]->oregon == 4){
+                        if ($map_status[0]->oregon == 1){ ?>
+                                    $('#map-5').addClass("ponter-none ");
+                                    $('#map-5 .cross').addClass("team_1_cross");
+                     <?php   }
+                         else if($map_status[0]->oregon == 2){ ?>
+                            $('#map-5').addClass("ponter-none ");
+                            $('#map-5 .cross').addClass("team_2_cross");
+                <?php   } else if ($map_status[0]->oregon == 3) { ?>
+                            $('#map-5').addClass("ponter-none picked team_1");
+
+                    
+                <?php   } else if ($map_status[0]->oregon == 4){ ?>
+                            $('#map-5').addClass("ponter-none picked team_1");
+
+                <?php    }
+                    }
+                     if( $map_status[0]->theme_park == 1 || $map_status[0]->theme_park == 2 || $map_status[0]->theme_park == 3 || $map_status[0]->theme_park == 4){
+                        if ($map_status[0]->theme_park == 1){ ?>
+                                    $('#map-6').addClass("ponter-none ");
+                                    $('#map-6 .cross').addClass("team_1_cross");
+                      <?php  }
+                         else if($map_status[0]->theme_park == 2){ ?>
+                            $('#map-6').addClass("ponter-none ");
+                            $('#map-6 .cross').addClass("team_2_cross");
+                <?php   } else if ($map_status[0]->theme_park == 3) { ?>
+                            $('#map-6').addClass("ponter-none picked team_1");
+
+
+                <?php   } else if ($map_status[0]->theme_park == 4){ ?>
+                             $('#map-6').addClass("ponter-none picked team_1");
+
+                <?php    }
+                    }
+                     if( $map_status[0]->villa == 1 || $map_status[0]->villa == 2 ||  $map_status[0]->villa == 3 || $map_status[0]->villa == 4){
+                        if ($map_status[0]->villa == 1){ ?>
+                                    $('#map-7').addClass("ponter-none ");
+                                    $('#map-7 .cross').addClass("team_1_cross");
+                    <?php    }
+                      else if($map_status[0]->villa == 2){ ?>
+                        $('#map-7').addClass("ponter-none ");
+                        $('#map-7 .cross').addClass("team_2_cross");
+                <?php   } else if ($map_status[0]->villa == 3) { ?>
+                
+                            $('#map-7').addClass("ponter-none picked team_1");
+                    
+                <?php   } else if ($map_status[0]->villa == 4){ ?>
+                            $('#map-7').addClass("ponter-none picked team_1");
+
+                <?php    }
+                    } 
+                    
+                ?>
+            
+            // maps[0].attributes.map.nodeValue
+           //a[0].children[2]
+           //console.log(maps);
+
+            $(".text-mapban-bg").click((e)=>{
+               var res;
+
+                var map_id = e.currentTarget.id;
+                $.post( "match/get_turn/<?php echo $teams[0]->id ?> ", function( data ) {
+                  var id =  JSON.parse(data);
+                 
+                    res =  id.reduce(function(result, item) {
+                                var key = Object.keys(item)[0]; //first property: a, b, c
+                                result[key] = item[key];
+                                return result;
+                            }, {});
+                    
+                    var cross = e.currentTarget.childNodes[5];
+                    $.post("match/get_selected_match/<?php echo $teams[0]->id ?>", function(data1){
+                        console.log( ("selec:" + data));
+                        var n3 =Number(data1);
+                        console.log(n3);
+                        if(n3 < 3){
+                            $.post("match/get_num_ban/" +res.turn_team_id +"/<?php echo $teams[0]->id ?>/"+map_id , function(data){
+                                    console.log('inside : '+data);
+                                    if(data != 'wait'){
+                                        console.log("\n2 inside");
+                                        if(data ==  'ban'){
+                                        $.post( "match/update_turn/"+res.turn_team_id+"/<?php echo $teams[0]->id ?>/"+ map_id, function( data ) {
+                                                cross.classList.add("team_"+ res.turn_team_id +"_cross");
+                                                e.currentTarget.classList = "text-mapban-bg ponter-none baned";          
+
+                                            });
+                                        }
+                                        else if(data == 'selected'){
+                                            $.post("match/select_match/"+res.turn_team_id+"/<?php echo $teams[0]->id ?>/"+map_id , function(data){
+                                                    console.log("success");
+                                                    e.currentTarget.classList = "text-mapban-bg ponter-none"+" picked team_"+res.turn_team_id;         
+                                                    // team_1
+                                            });
+                                        }
+                                    
+                                    }else{
+                                        // $.post("match/update_last_match/"+res.turn_team_id+"/<?php echo $teams[0]->id ?>/"+map_id , function(data){
+                                          e.currentTarget.classList = "text-mapban-bg ponter-none";
+                                        // });
+                                        console.log("ho gaya");
+                                        location.reload();
+                                        return false;
+
+                                    }
+
+
+                            });
+                        }else{
+                            
+                        }
+                     }); 
+                     
+                    // $.post( "match/update_turn/"+res.turn_team_id+"//"+ map_id, function( data ) {
+                    //                 cross.classList.add("team_"+ res.turn_team_id +"_cross");
+                                
+                    // });   
+                    
+                 });
+
+
+              
+         });
+    });   
+    </script>
+    <script src="assets/js/ajax.js"></script>
+    <style>
+        .team_2 .mapbans__name::after{
+            --translateX: 100%;
+            --translateY: 0;
+            background-color: #ff6e00;
+            background-image:  url(<?php echo base_url('images/') . $teams[0]->team_2_img ?>);
+            right: 0px;
+        }
+
+        .team_1   .mapbans__name::after {
+            --translateX: -100%;
+            --translateY: 0;
+            background-color: #00f;
+            background-image: url(<?php echo base_url('images/') . $teams[0]->team_1_img ?>);
+            left: 0px;
+        }
+    </style>
 </body>
 </html>

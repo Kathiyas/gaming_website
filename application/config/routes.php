@@ -56,3 +56,14 @@ $route['translate_uri_dashes'] = FALSE;
 $route['addTeam'] = 'team/add_team';
 $route['match'] = 'match';
 $route['match/match_team_update'] = 'match/match_team_update';
+$route['match/edit'] = 'match/edit';
+$route['match/get_turn/(:num)'] = 'match/get_turn/$1';
+$route['match/update_turn/(:num)/(:num)/(:any)'] = 'match/update_turn/$1/$2/$3';
+$route['match/get_num_ban/(:num)/(:num)/(:any)'] = 'match/get_num_map_ban/$1/$2/$3';
+$route['match/select_match/(:num)/(:num)/(:any)'] = 'match/select_match/$1/$2/$3';
+$route['match/update_last_match/(:num)/(:num)/(:any)'] = 'match/update_last_match/$1/$2/$3';
+$route['match/reset/(:num)'] = 'match/reset/$1';
+$route['match/get_selected_match/(:num)'] = 'match/get_selected_match/$1';
+
+
+

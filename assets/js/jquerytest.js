@@ -22,8 +22,8 @@ jQuery(document).ready(function(){
         jQuery('.tabs nav a:nth-of-type(' + (index + 1) + ')').addClass('selected');
     }
     });
-    jQuery('#tabs-nav div').click(function () {
-        jQuery('#tabs-nav div').removeClass('active');
+    jQuery('#tabs-nav   div').click(function () {
+        jQuery('#tabs-nav   div').removeClass('active');
         jQuery(this).addClass('active');
         jQuery('.tab-content').hide();
         var activeTab = jQuery(this).find('a').attr('href');
@@ -33,8 +33,8 @@ jQuery(document).ready(function(){
   
   
   
-    jQuery('#tabs-nav2 div').click(function () {
-      jQuery('#tabs-nav2 div').removeClass('active');
+    jQuery('#tabs-nav2  div').click(function () {
+      jQuery('#tabs-nav2  div').removeClass('active');
       jQuery(this).addClass('active');
       jQuery('.tab-content2').hide();
       var activeTab = jQuery(this).find('a').attr('href');
